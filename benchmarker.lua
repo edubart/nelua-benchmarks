@@ -49,7 +49,8 @@ local function benchmark(prefix, command, ntimes)
   local std = 0
   for i=1,ntimes do
     local elapsed = measurements[i]
-    std = std + math.pow(elapsed - avg, 2)
+    local d = elapsed - avg
+    std = std + d*d
   end
   std = math.sqrt(std/ntimes)
   printf('%s | %10.3f | %10.3f | %10.3f | %10.3f |', prefix, min, avg, max, std)
